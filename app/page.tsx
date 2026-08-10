@@ -19,7 +19,6 @@ import { site } from "@/lib/site";
 export const revalidate = 3600;
 
 export default async function HomePage() {
-  const proofRail = [...appearances.slice(0, 4), ...appearances.slice(0, 4)];
   const digestArticles = await getDigestArticles({ limit: 2 });
 
   return (
@@ -36,12 +35,13 @@ export default async function HomePage() {
           </div>
           <div className="md:pb-3">
             <p className="max-w-[32rem] text-[1.35rem] leading-8 tracking-[-0.035em] text-ink">
-              Data person by day. Podcast host the rest of the time.
+              {site.role} at Cushman & Wakefield. Host of Ready Set Do.
             </p>
             <p className="mt-6 max-w-sm text-sm leading-7 text-muted">
-              I work on enterprise data, automation, reporting, and the messy
-              systems that keep teams honest. I also host Ready Set Do, where I
-              interview successful people about how they got unstuck.
+              I work on enterprise AI adoption, Claude rollout, agentic
+              workflows, automation, reporting, and the messy systems that keep
+              teams honest. I also host Ready Set Do, where I interview
+              successful people about how they got unstuck.
             </p>
             <p className="mt-5 max-w-sm text-sm leading-7 text-muted">
               If LinkedIn brought you here, start with the CV or Work pages. If
@@ -79,7 +79,7 @@ export default async function HomePage() {
         <div className="sticky top-8 hidden md:block">
           <div className="overflow-hidden border border-line bg-paper-strong">
             <Image
-              src={site.image}
+              src={site.imagePath}
               alt="Naman Pandey"
               width={800}
               height={1000}
@@ -152,21 +152,6 @@ export default async function HomePage() {
           title="Media"
           intro="The show, the guest spots, and the outside rooms where the questions keep following me."
         />
-        <div className="mt-8 overflow-hidden border-y border-line py-3">
-          <div className="motion-rail" aria-hidden="true">
-            {proofRail.map((appearance, index) => (
-              <a
-                key={`${appearance.href}-${index}`}
-                href={appearance.href}
-                className="motion-rail-item font-mono text-[10px] uppercase tracking-[0.16em] text-muted"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {appearance.source} / {appearance.date ?? "appearance"}
-              </a>
-            ))}
-          </div>
-        </div>
         <div className="mt-8">
           <AppearanceGrid appearances={appearances.slice(0, 4)} />
         </div>
@@ -211,7 +196,6 @@ export default async function HomePage() {
           <EntryList
             entries={lists.map((item) => ({
               kicker: item.tag,
-              meta: item.date,
               title: item.title,
               text: item.description,
               href: item.href,
@@ -229,7 +213,6 @@ export default async function HomePage() {
         <div className="mt-8">
           <EntryList
             entries={questions.slice(0, 4).map((item) => ({
-              meta: item.date,
               title: item.question,
               text: item.context,
             }))}

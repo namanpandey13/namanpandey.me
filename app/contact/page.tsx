@@ -1,21 +1,19 @@
-import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact routes for Naman Pandey.",
-  alternates: {
-    canonical: "/contact",
-  },
-};
+  description: "Email, LinkedIn, and booking routes for Naman Pandey.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <PageShell
       eyebrow="Contact"
       title="Clear asks only."
-      intro="Best route: LinkedIn. Send the context, the ask, and why now."
+      intro="Best routes: email for a clear ask, LinkedIn when the context lives in your profile."
     >
       <div className="grid gap-12 md:grid-cols-[0.85fr_1.15fr]">
         <div>
@@ -30,14 +28,14 @@ export default function ContactPage() {
         <div className="divide-y divide-line border-y border-line">
           {[
             {
-              label: "LinkedIn",
-              href: site.social.linkedin,
-              display: "linkedin.com/in/namanpandey0796",
-            },
-            {
               label: "Email",
               href: site.social.email,
               display: "namanpandey0796@gmail.com",
+            },
+            {
+              label: "LinkedIn",
+              href: site.social.linkedin,
+              display: "linkedin.com/in/namanpandey0796",
             },
             {
               label: "Ready Set Do",

@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Books that rewired me",
   description: "Books that rewired Naman Pandey.",
-  alternates: {
-    canonical: "/lists/books",
-  },
-};
+  path: "/lists/books",
+});
 
 export default function BooksListPage() {
   return (

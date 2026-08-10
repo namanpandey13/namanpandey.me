@@ -1,21 +1,19 @@
-import type { Metadata } from "next";
 import { EntryList } from "@/components/entry-list";
 import { JsonLd } from "@/components/json-ld";
 import { PageShell } from "@/components/page-shell";
 import { buildDigestArticleSchema, digest, getDigestArticles } from "@/lib/articles";
 import { writing } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Writing",
   description:
     "Ready Set Digest articles, notes, field reports, short essays, and opinions from Naman Pandey.",
-  alternates: {
-    canonical: "/writing",
-  },
-};
+  path: "/writing",
+});
 
 function buildWritingPageSchema(articles: Awaited<ReturnType<typeof getDigestArticles>>) {
   const pageUrl = `${site.url}/writing`;

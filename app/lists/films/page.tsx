@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Top 25 films of all time",
   description: "Top 25 films of all time by Naman Pandey.",
-  alternates: {
-    canonical: "/lists/films",
-  },
-};
+  path: "/lists/films",
+});
 
 export default function FilmsListPage() {
   return (

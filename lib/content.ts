@@ -68,7 +68,7 @@ export const projects: Project[] = [
     year: "current",
     summary:
       "Claude rollout, agentic workflow pilots, Power BI, Azure Data Lake, SQL, process automation, and reporting work for finance, ops, and brokerage teams. Current day job at Cushman & Wakefield.",
-    role: "Claude Product Owner / Forward Deployed Engineer, Enterprise AI.",
+    role: `${site.role}, Enterprise AI.`,
     proof:
       "Fortune 500 AI adoption, business-unit pilots, 10M+ row reporting, SOX workflow mapping, AI contract abstraction, and recurring executive reporting.",
   },
@@ -439,7 +439,7 @@ export const lists: ListEntry[] = [
 export const cvEntries: CvEntry[] = [
   {
     label: "Current",
-    title: "Claude Product Owner / Forward Deployed Engineer, Cushman & Wakefield",
+    title: `${site.role}, Cushman & Wakefield`,
     detail:
       "Greater Chicago Area. Running Claude rollout work across business units: pilots, agentic workflows, adoption, enablement, and the practical bridge between Big Tech AI demos and corporate reality.",
   },

@@ -1,14 +1,12 @@
-import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
-  description:
-    "About Naman Pandey: Claude Product Owner / Forward Deployed Engineer at Cushman & Wakefield and host of Ready Set Do.",
-  alternates: {
-    canonical: "/about",
-  },
-};
+  description: `About Naman Pandey: ${site.role} at Cushman & Wakefield and host of Ready Set Do.`,
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -19,8 +17,8 @@ export default function AboutPage() {
     >
       <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr]">
         <p className="text-2xl font-semibold leading-tight tracking-[-0.045em] text-ink">
-          Naman Pandey runs Claude rollout work at Cushman & Wakefield and
-          hosts Ready Set Do after hours.
+          Naman Pandey is a {site.role} at Cushman & Wakefield and hosts Ready
+          Set Do after hours.
         </p>
         <div className="grid gap-7 text-base leading-8 text-muted">
           <p>

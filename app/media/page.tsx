@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { AppearanceGrid } from "@/components/appearance-grid";
 import { EntryList } from "@/components/entry-list";
 import { PageShell } from "@/components/page-shell";
 import { appearances } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Media",
   description:
     "Ready Set Do, podcast links, and outside appearances featuring Naman Pandey on AI at work, creator systems, and getting unstuck.",
-  alternates: {
-    canonical: "/media",
-  },
-};
+  path: "/media",
+});
 
 export default function MediaPage() {
   return (

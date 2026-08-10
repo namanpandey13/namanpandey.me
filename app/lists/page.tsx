@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
 import { EntryList } from "@/components/entry-list";
 import { PageShell } from "@/components/page-shell";
 import { lists } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Lists",
   description: "Ranked lists from Naman Pandey.",
-  alternates: {
-    canonical: "/lists",
-  },
-};
+  path: "/lists",
+});
 
 export default function ListsPage() {
   return (
@@ -21,7 +19,6 @@ export default function ListsPage() {
       <EntryList
         entries={lists.map((item) => ({
           kicker: item.tag,
-          meta: item.date,
           title: item.title,
           text: item.description,
           href: item.href,

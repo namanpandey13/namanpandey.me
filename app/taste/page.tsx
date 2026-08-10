@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { favorites } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Taste",
   description:
     "Films, shows, music, books, interfaces, and internet things Naman Pandey keeps returning to.",
-  alternates: {
-    canonical: "/taste",
-  },
-};
+  path: "/taste",
+});
 
 export default function TastePage() {
   return (

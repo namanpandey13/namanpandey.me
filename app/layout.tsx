@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { appearances } from "@/lib/content";
+import { openGraphImage, twitterMetadata } from "@/lib/metadata";
 import { sameAs, site } from "@/lib/site";
-
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 function getYouTubeEmbedUrl(url: string) {
   try {
@@ -96,14 +82,9 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.title,
     description: site.description,
-    images: [{ url: site.image, width: 1200, height: 630, alt: site.name }],
+    images: [openGraphImage],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: site.title,
-    description: site.description,
-    images: [site.image],
-  },
+  twitter: twitterMetadata(site.title, site.description),
   robots: {
     index: true,
     follow: true,
@@ -125,7 +106,7 @@ const personSchema = {
       url: `${site.url}/`,
       image: site.image,
       email: "namanpandey0796@gmail.com",
-      jobTitle: "Claude Product Owner / Forward Deployed Engineer and podcast host",
+      jobTitle: site.role,
       description: site.description,
       homeLocation: {
         "@type": "Place",
@@ -142,7 +123,7 @@ const personSchema = {
       hasOccupation: [
         {
           "@type": "Occupation",
-          name: "Claude Product Owner / Forward Deployed Engineer",
+          name: site.role,
         },
         {
           "@type": "Occupation",
@@ -221,7 +202,7 @@ const personSchema = {
       url: `${site.url}/`,
       name: site.title,
       description: site.description,
-      dateModified: "2026-06-05",
+      dateModified: "2026-08-10",
       mainEntity: {
         "@id": `${site.url}/#person`,
       },
@@ -230,7 +211,10 @@ const personSchema = {
       },
       primaryImageOfPage: {
         "@type": "ImageObject",
+        url: site.image,
         contentUrl: site.image,
+        width: site.imageWidth,
+        height: site.imageHeight,
       },
     },
     {
@@ -251,9 +235,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en">
       <body>
-        <JsonLd data={personSchema} />
+        <JsonLd id="naman-pandey-person-json-ld" data={personSchema} />
         <SiteHeader />
         {children}
         <SiteFooter />

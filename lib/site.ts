@@ -1,5 +1,8 @@
 import type { NavItem } from "@/types/content";
 
+const canonicalUrl = "https://www.namanpandey.me";
+const canonicalRole = "Claude AI Product Owner / Forward Deployed Engineer";
+
 function optionalUrl(value: string | undefined) {
   const trimmed = String(value ?? "").trim().replace(/\/+$/, "");
   return trimmed || null;
@@ -15,13 +18,17 @@ const optionalIdentityLinks = [
 
 export const site = {
   name: "Naman Pandey",
-  url: "https://www.namanpandey.me",
-  title: "Naman Pandey | AI at Work, Ready Set Do, and Field Notes",
+  url: canonicalUrl,
+  role: canonicalRole,
+  title: `Naman Pandey | ${canonicalRole}`,
   description:
-    "Naman Pandey runs Claude and enterprise AI work at Cushman & Wakefield, hosts Ready Set Do, and writes field notes on AI at the 9-5 and the 5-9.",
-  image: "https://readysetdopodcast.com/naman-pandey.jpg",
+    "Naman Pandey is a Claude AI Product Owner / Forward Deployed Engineer at Cushman & Wakefield, host of Ready Set Do, and writer on enterprise AI adoption.",
+  image: `${canonicalUrl}/naman-pandey.png`,
+  imagePath: "/naman-pandey.png",
+  imageWidth: 1300,
+  imageHeight: 1300,
   location: "Chicago",
-  identity: "AI at work / Ready Set Do / Field notes",
+  identity: `${canonicalRole} / Ready Set Do / Field notes`,
   social: {
     email: "mailto:namanpandey0796@gmail.com",
     linkedin: "https://www.linkedin.com/in/namanpandey0796/",
@@ -32,7 +39,9 @@ export const site = {
     apple: "https://podcasts.apple.com/us/podcast/id1740005017?mt=2&ls=1",
     instagram: "https://www.instagram.com/readysetdopodcast",
     readySetDoX: "https://x.com/ReadySetDo_",
+    xHandle: "@ReadySetDo_",
     readySetDigest: "https://readysetdigest.substack.com",
+    readySetDigestSubscribe: "https://readysetdigest.substack.com/subscribe",
     readySetDo: "https://readysetdopodcast.com/",
     readySetDoAiSearch: "https://readysetdopodcast.com/ai-search",
     readySetDoHost: "https://readysetdopodcast.com/host/naman-pandey",

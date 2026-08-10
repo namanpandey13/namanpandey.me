@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
 import { EntryList } from "@/components/entry-list";
 import { PageShell } from "@/components/page-shell";
 import { questions } from "@/lib/content";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Questions",
   description:
     "Open loops, current curiosities, and questions Naman Pandey is thinking about.",
-  alternates: {
-    canonical: "/questions",
-  },
-};
+  path: "/questions",
+});
 
 export default function QuestionsPage() {
   return (

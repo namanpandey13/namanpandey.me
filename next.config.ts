@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "namanpandey.me" }],
         destination: "https://www.namanpandey.me/:path*",
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },

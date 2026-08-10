@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { PageShell } from "@/components/page-shell";
 import { getWritingBySlug, writingPages } from "@/lib/content";
+import { absoluteUrl, displayTitle, openGraphImage, twitterMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
 type PageProps = {
@@ -28,7 +29,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const path = `/writing/${item.slug}`;
+  const pageUrl = absoluteUrl(path);
   const description = item.description ?? item.summary;
+  const socialTitle = displayTitle(item.title);
 
   return {
     title: item.title,
@@ -38,19 +41,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       type: "article",
-      url: path,
-      title: item.title,
+      url: pageUrl,
+      siteName: site.name,
+      title: socialTitle,
       description,
       publishedTime: item.publishedAt,
       authors: [site.name],
-      images: [{ url: site.image, width: 1200, height: 630, alt: site.name }],
+      images: [openGraphImage],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: item.title,
-      description,
-      images: [site.image],
-    },
+    twitter: twitterMetadata(socialTitle, description),
   };
 }
 
