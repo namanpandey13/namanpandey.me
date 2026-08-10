@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Naman Pandey Brand Identity Guideline</title>
+    <style>
+      @font-face {
+        font-family: "IBM Plex Sans";
+        font-style: normal;
+        font-weight: 400 700;
+        src: url("../.next/static/media/03fc1b4a8d284b5e-s.p.09.f.n_ccld80.woff2") format("woff2");
+      }
+
+      @font-face {
+        font-family: "IBM Plex Mono";
+        font-style: normal;
+        font-weight: 400 700;
+        src: url("../.next/static/media/23b7a97ae3b5c134-s.p.0o14nraug8u5s.woff2") format("woff2");
+      }
+
+      :root {
+        --paper: #ece8df;
+        --paper-strong: #f4f1ea;
+        --ink: #111315;
+        --muted: #646a66;
+        --soft: #8d918c;
+        --line: #c9c2b6;
+        --brass: #9a7a2f;
+        --red: #9d0b13;
+        --red-dark: #58070c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        width: 11in;
+        height: 8.5in;
+      }
+
+      .page {
+        position: relative;
+        width: 11in;
+        height: 8.5in;
+        padding: 0.42in 0.5in 0.44in;
+        overflow: hidden;
+      }
+
+      .top-rule,
+      .mid-rule,
+      .bottom-rule {
+        position: absolute;
+        left: 0.5in;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .top-rule {
+        top: 2.22in;
+        width: 4.95in;
+      }
+
+      .mid-rule {
+        top: 4.98in;
+        right: 0.5in;
+      }
+
+      .bottom-rule {
+        bottom: 0.43in;
+        right: 0.5in;
+      }
+
+      header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.4in;
+      }
+
+      .wordmark {
+        line-height: 0.84;
+        letter-spacing: -0.088em;
+        font-size: 76px;
+        font-weight: 700;
+        max-width: 5.8in;
+      }
+
+      .meta {
+        font-family: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        line-height: 1.65;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      .header-meta {
+        min-width: 2.7in;
+        padding-top: 0.08in;
+        text-align: right;
+      }
+
+      .intro {
+        position: absolute;
+        top: 2.5in;
+        left: 0.5in;
+        width: 4.95in;
+      }
+
+      .intro-label {
+        margin-bottom: 0.28in;
+      }
+
+      .statement {
+        font-family: Baskerville, "Libre Baskerville", Georgia, serif;
+        font-size: 25px;
+        line-height: 1.18;
+        max-width: 4.7in;
+      }
+
+      .statement span {
+        color: var(--red);
+      }
+
+      .caption {
+        margin-top: 0.2in;
+        max-width: 4.05in;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .specimen {
+        position: absolute;
+        top: 1.2in;
+        right: 0.5in;
+        width: 4.82in;
+        height: 3.42in;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 0.22in;
+      }
+
+      .identity-block {
+        position: relative;
+        min-height: 3.42in;
+        background: var(--ink);
+        color: var(--paper-strong);
+        padding: 0.22in;
+        overflow: hidden;
+      }
+
+      .identity-block::before {
+        content: "";
+        position: absolute;
+        inset: -0.26in -0.18in auto auto;
+        width: 2.05in;
+        height: 2.05in;
+        border-radius: 50%;
+        background: radial-gradient(circle, #d61b24 0, var(--red) 42%, var(--red-dark) 78%);
+      }
+
+      .identity-block::after {
+        content: "";
+        position: absolute;
+        left: 0.22in;
+        right: 0.22in;
+        bottom: 0.24in;
+        height: 1px;
+        background: rgba(244, 241, 234, 0.28);
+      }
+
+      .identity-title {
+        position: relative;
+        z-index: 1;
+        font-size: 38px;
+        line-height: 0.86;
+        letter-spacing: -0.072em;
+        font-weight: 700;
+      }
+
+      .identity-note {
+        position: absolute;
+        left: 0.22in;
+        bottom: 0.43in;
+        right: 0.22in;
+        color: rgba(244, 241, 234, 0.76);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .voice-list {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .voice-item {
+        padding: 0.12in 0 0.1in;
+        border-top: 1px solid var(--line);
+      }
+
+      .voice-item:first-child {
+        border-top: 0;
+      }
+
+      .voice-title {
+        font-size: 20px;
+        line-height: 1;
+        letter-spacing: -0.045em;
+        font-weight: 700;
+      }
+
+      .voice-copy {
+        margin-top: 0.06in;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .bottom-grid {
+        position: absolute;
+        left: 0.5in;
+        right: 0.5in;
+        top: 5.28in;
+        display: grid;
+        grid-template-columns: 2.15in 3.2in 4.18in;
+        gap: 0.28in;
+      }
+
+      .section-title {
+        margin-bottom: 0.12in;
+      }
+
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.09in;
+      }
+
+      .swatch {
+        height: 0.55in;
+        border: 1px solid var(--line);
+        padding: 0.08in;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        font-family: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+        font-size: 8px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .swatch.light {
+        color: var(--ink);
+      }
+
+      .swatch.dark {
+        color: var(--paper-strong);
+        border-color: transparent;
+      }
+
+      .type-card {
+        border-top: 1px solid var(--line);
+        padding-top: 0.13in;
+      }
+
+      .type-row {
+        display: grid;
+        grid-template-columns: 1.05in 1fr;
+        gap: 0.14in;
+        padding: 0.1in 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .type-name {
+        font-size: 20px;
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+        font-weight: 700;
+      }
+
+      .type-name.serif {
+        font-family: Baskerville, "Libre Baskerville", Georgia, serif;
+        letter-spacing: -0.01em;
+        font-weight: 700;
+      }
+
+      .type-name.mono {
+        font-family: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+      }
+
+      .type-use {
+        color: var(--muted);
+        font-size: 10.5px;
+        line-height: 1.45;
+      }
+
+      .rules {
+        border-top: 1px solid var(--line);
+        padding-top: 0.13in;
+        display: grid;
+        gap: 0.1in;
+      }
+
+      .rule {
+        display: grid;
+        grid-template-columns: 0.32in 1fr;
+        gap: 0.12in;
+      }
+
+      .rule-no {
+        font-family: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+        color: var(--red);
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+
+      .rule-copy {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .footer {
+        position: absolute;
+        left: 0.5in;
+        right: 0.5in;
+        bottom: 0.16in;
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+      }
+
+      .red-slash {
+        color: var(--red);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page" aria-label="Naman Pandey one page visual brand identity guideline">
+      <div class="top-rule"></div>
+      <div class="mid-rule"></div>
+      <div class="bottom-rule"></div>
+
+      <header>
+        <div>
+          <div class="meta">Visual identity / One pager</div>
+          <div class="wordmark">Naman<br />Pandey</div>
+        </div>
+        <div class="meta header-meta">
+          Chicago<br />
+          Build / Publish / Ask<br />
+          Work / Media / Writing / Taste
+        </div>
+      </header>
+
+      <section class="intro">
+        <div class="meta intro-label">Positioning</div>
+        <div class="statement">
+          A public workbench for <span>sharp questions</span>, practical systems, and conversations that turn into receipts.
+        </div>
+        <p class="caption">
+          The brand should feel finished enough to trust, but never polished into distance. It is builder energy with editorial taste: plain structure, strong type, one dangerous red.
+        </p>
+      </section>
+
+      <section class="specimen">
+        <div class="identity-block">
+          <div class="meta" style="color: rgba(244, 241, 234, 0.7);">Specimen</div>
+          <div class="identity-title">Make<br />the attempt<br />public.</div>
+          <div class="identity-note">
+            Use the red when something needs heat: a launch, a claim, a thumbnail, a question that will not leave you alone.
+          </div>
+        </div>
+
+        <div class="voice-list">
+          <div class="voice-item">
+            <div class="voice-title">Plain first.</div>
+            <div class="voice-copy">Clean structure, direct labels, no fake luxury.</div>
+          </div>
+          <div class="voice-item">
+            <div class="voice-title">Opinionated, not loud.</div>
+            <div class="voice-copy">A thesis in the foreground, decoration in the back.</div>
+          </div>
+          <div class="voice-item">
+            <div class="voice-title">Receipts visible.</div>
+            <div class="voice-copy">Dates, links, artifacts, numbers, public work.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <div>
+          <div class="meta section-title">Palette</div>
+          <div class="swatches">
+            <div class="swatch light" style="background: #ece8df;"><span>Paper</span><span>#ECE8DF</span></div>
+            <div class="swatch light" style="background: #f4f1ea;"><span>Warm</span><span>#F4F1EA</span></div>
+            <div class="swatch dark" style="background: #111315;"><span>Ink</span><span>#111315</span></div>
+            <div class="swatch dark" style="background: #9d0b13;"><span>Deep red</span><span>#9D0B13</span></div>
+            <div class="swatch dark" style="background: #9a7a2f;"><span>Brass</span><span>#9A7A2F</span></div>
+            <div class="swatch light" style="background: #c9c2b6;"><span>Line</span><span>#C9C2B6</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="meta section-title">Type system</div>
+          <div class="type-card">
+            <div class="type-row">
+              <div class="type-name">IBM Plex Sans</div>
+              <div class="type-use">Primary identity face. Huge headlines, page titles, section labels. Use 600-700 weight, tight tracking, confident line height.</div>
+            </div>
+            <div class="type-row">
+              <div class="type-name mono">IBM Plex Mono</div>
+              <div class="type-use">Navigation, metadata, dates, tags, tiny system language. Uppercase with generous tracking.</div>
+            </div>
+            <div class="type-row">
+              <div class="type-name serif">Libre Baskerville</div>
+              <div class="type-use">New secondary font. Use for essay pull quotes, intros, reflective notes, and taste-led moments where the brand needs warmth.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="meta section-title">Usage rules</div>
+          <div class="rules">
+            <div class="rule">
+              <div class="rule-no">01</div>
+              <div class="rule-copy">Keep layouts gridded, quiet, and editorial. Let the type carry the room.</div>
+            </div>
+            <div class="rule">
+              <div class="rule-no">02</div>
+              <div class="rule-copy">Use deep red as a signal, not wallpaper. One red moment per composition is enough.</div>
+            </div>
+            <div class="rule">
+              <div class="rule-no">03</div>
+              <div class="rule-copy">Pair brown/brass with paper for archive energy; pair red with ink for media energy.</div>
+            </div>
+            <div class="rule">
+              <div class="rule-no">04</div>
+              <div class="rule-copy">Copy should sound like: useful, restless, specific. Avoid guru-speak and soft-focus inspiration.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer meta">
+        <span>Naman Pandey brand identity</span>
+        <span>IBM Plex Sans <span class="red-slash">/</span> IBM Plex Mono <span class="red-slash">/</span> Libre Baskerville</span>
+      </footer>
+    </main>
+  </body>
+</html>
