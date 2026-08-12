@@ -18,7 +18,7 @@ export type WallArtwork = {
   artist: string;
   year?: string;
   note: string;
-  sourceImage?: TasteImage;
+  sourceImage: TasteImage;
 };
 
 export type RecordPick = {
@@ -103,6 +103,14 @@ export const tasteRoomImages: TasteImage[] = [
 ];
 
 export const tasteArtImages: TasteImage[] = [
+  {
+    title: "The Young Napoleon Bonaparte Studying",
+    label: "Job (Jacques Onfroy de Bréville)",
+    src: "/taste/art-napoleon-brienne.jpg",
+    width: 775,
+    height: 1024,
+    frame: "portrait",
+  },
   {
     title: "The Death of Socrates",
     label: "Jacques-Louis David",
@@ -215,9 +223,31 @@ export const tasteArtImages: TasteImage[] = [
     width: 2200,
     height: 1634,
   },
+  {
+    title: "The Cliff Walk at Pourville",
+    label: "Claude Monet",
+    src: "/taste/art-cliff-walk-pourville.jpg",
+    width: 2200,
+    height: 1764,
+  },
+  {
+    title: "A Sunday Afternoon on the Island of La Grande Jatte",
+    label: "Georges Seurat",
+    src: "/taste/art-la-grande-jatte.jpg",
+    width: 2200,
+    height: 1464,
+  },
 ];
 
-const sourceArt = (src: string) => tasteArtImages.find((image) => image.src === src);
+const sourceArt = (src: string) => {
+  const image = tasteArtImages.find((item) => item.src === src);
+
+  if (!image) {
+    throw new Error(`Missing taste artwork image: ${src}`);
+  }
+
+  return image;
+};
 
 export const wallSections: Array<{
   image: TasteImage;
@@ -230,6 +260,7 @@ export const wallSections: Array<{
         title: "The Young Napoleon Bonaparte Studying",
         artist: "Job (Jacques Onfroy de Bréville)",
         year: "c.1908",
+        sourceImage: sourceArt("/taste/art-napoleon-brienne.jpg"),
         note: "A kid at a desk in Brienne, the emperor's shadow already thrown on the wall. The shadow shows up before the man does. That's the whole bet.",
       },
     ],
@@ -280,11 +311,13 @@ export const wallSections: Array<{
       {
         title: "The Cliff Walk at Pourville",
         artist: "Claude Monet",
+        sourceImage: sourceArt("/taste/art-cliff-walk-pourville.jpg"),
         note: "Two figures, a lot of wind, a good day. Proof I don't only hang the heavy stuff.",
       },
       {
         title: "A Sunday Afternoon on the Island of La Grande Jatte",
         artist: "Georges Seurat",
+        sourceImage: sourceArt("/taste/art-la-grande-jatte.jpg"),
         note: "Made dot by dot over two years. The most patient flex in the building.",
       },
     ],
