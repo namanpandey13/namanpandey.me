@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
   title: "About",
   description: `About Naman Pandey: ${site.role} at Cushman & Wakefield and host of Ready Set Do.`,
   path: "/about",
+  openGraphType: "profile",
 });
 
 export default function AboutPage() {

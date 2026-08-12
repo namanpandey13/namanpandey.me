@@ -6,6 +6,7 @@ type PageMetadataInput = {
   description: string;
   path: `/${string}`;
   openGraphTitle?: string;
+  openGraphType?: "profile" | "website";
 };
 
 export const openGraphImage = {
@@ -39,6 +40,7 @@ export function pageMetadata({
   description,
   path,
   openGraphTitle,
+  openGraphType = "website",
 }: PageMetadataInput): Metadata {
   const resolvedTitle = openGraphTitle ?? displayTitle(title);
 
@@ -49,7 +51,7 @@ export function pageMetadata({
       canonical: path,
     },
     openGraph: {
-      type: "website",
+      type: openGraphType,
       url: absoluteUrl(path),
       siteName: site.name,
       title: resolvedTitle,

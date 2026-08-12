@@ -77,14 +77,14 @@ export default async function HomePage() {
         className="mt-20 grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-start"
       >
         <div className="sticky top-8 hidden md:block">
-          <div className="overflow-hidden border border-line bg-paper-strong">
+          <div className="group overflow-hidden border border-line bg-paper-strong">
             <Image
               src={site.imagePath}
               alt="Naman Pandey"
               width={800}
               height={1000}
               priority
-              className="aspect-[4/5] w-full object-cover grayscale"
+              className="aspect-[4/5] w-full object-cover grayscale transition duration-300 ease-out group-hover:grayscale-0"
             />
           </div>
         </div>

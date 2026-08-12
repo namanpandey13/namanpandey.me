@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getDigestArticles } from "@/lib/articles";
 import { lists, writingPages } from "@/lib/content";
 import { navItems, site } from "@/lib/site";
+import { tasteSubpagePaths } from "@/lib/taste";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date("2026-06-05");
@@ -22,6 +23,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  const tasteSubpages = tasteSubpagePaths.map((path) => ({
+    url: `${site.url}${path}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.62,
+  }));
+
   const writingDetailPages = writingPages.map((item) => ({
     url: `${site.url}/writing/${item.slug}`,
     lastModified: item.publishedAt ? new Date(item.publishedAt) : lastModified,
@@ -29,5 +37,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.72,
   }));
 
-  return [...navPages, ...writingDetailPages, ...listPages];
+  return [...navPages, ...writingDetailPages, ...listPages, ...tasteSubpages];
 }
