@@ -18,6 +18,7 @@ export type WallArtwork = {
   artist: string;
   year?: string;
   note: string;
+  sourceImage?: TasteImage;
 };
 
 export type RecordPick = {
@@ -216,6 +217,8 @@ export const tasteArtImages: TasteImage[] = [
   },
 ];
 
+const sourceArt = (src: string) => tasteArtImages.find((image) => image.src === src);
+
 export const wallSections: Array<{
   image: TasteImage;
   items: WallArtwork[];
@@ -237,16 +240,19 @@ export const wallSections: Array<{
       {
         title: "Wanderer above the Sea of Fog",
         artist: "Caspar David Friedrich",
+        sourceImage: sourceArt("/taste/art-wanderer.jpg"),
         note: "Alone, above the weather, no idea what's under the fog. Correct posture for most of it.",
       },
       {
         title: "The Death of Socrates",
         artist: "Jacques-Louis David",
+        sourceImage: sourceArt("/taste/art-death-of-socrates.jpg"),
         note: "The cleanest argument that conviction costs something. He reaches for the cup mid-sentence.",
       },
       {
         title: "The School of Athens",
         artist: "Raphael",
+        sourceImage: sourceArt("/taste/art-school-of-athens.jpg"),
         note: "Every idea worth having, in one room, arguing. The good kind of loud.",
       },
     ],
@@ -257,11 +263,13 @@ export const wallSections: Array<{
       {
         title: "Barge Haulers on the Volga",
         artist: "Ilya Repin",
+        sourceImage: sourceArt("/taste/art-volga-boatmen.jpg"),
         note: "The part of the work nobody frames. Repin framed it anyway. So did I.",
       },
       {
         title: "The Fighting Temeraire",
         artist: "J.M.W. Turner",
+        sourceImage: sourceArt("/taste/art-fighting-temeraire.jpg"),
         note: "An old warship towed off to be scrapped at sunset. Progress, and what it costs. Turner knew.",
       },
     ],

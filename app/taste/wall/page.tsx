@@ -4,7 +4,12 @@ import { JsonLd } from "@/components/json-ld";
 import { PageShell } from "@/components/page-shell";
 import { absoluteUrl, pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
-import { wallArtworks, wallSections, type TasteImage } from "@/lib/taste";
+import {
+  wallArtworks,
+  wallSections,
+  type TasteImage,
+  type WallArtwork,
+} from "@/lib/taste";
 
 export const metadata = pageMetadata({
   title: "The Wall",
@@ -32,6 +37,7 @@ const wallSchema = {
       item: {
         "@type": "VisualArtwork",
         name: artwork.title,
+        image: artwork.sourceImage ? absoluteUrl(artwork.sourceImage.src) : undefined,
         creator: {
           "@type": "Person",
           name: artwork.artist,
@@ -62,16 +68,22 @@ export default function TasteWallPage() {
 
       <div className="mt-16 grid gap-16">
         {wallSections.map((section) => (
-          <section key={section.image.src} className="grid gap-8">
+          <section
+            key={section.image.src}
+            className="grid gap-8 border-t border-line pt-8 lg:grid-cols-[280px_1fr]"
+          >
             <TastePhoto image={section.image} />
-            <EntryList
-              entries={section.items.map((item) => ({
-                kicker: item.artist,
-                meta: item.year,
-                title: item.title,
-                text: item.note,
-              }))}
-            />
+            <div className="min-w-0">
+              <EntryList
+                entries={section.items.map((item) => ({
+                  kicker: item.artist,
+                  meta: item.year,
+                  title: item.title,
+                  text: item.note,
+                }))}
+              />
+              <SourceArtGrid items={section.items} />
+            </div>
           </section>
         ))}
       </div>
@@ -83,18 +95,73 @@ function TastePhoto({ image }: { image: TasteImage }) {
   const frameClass = image.frame === "portrait" ? "aspect-[3/4]" : "aspect-[4/3]";
 
   return (
-    <figure className="border-t border-line pt-5">
+    <figure className="max-w-[280px]">
       <div className="group overflow-hidden border border-line bg-paper-strong">
         <Image
           src={image.src}
           alt={`${image.title} on Naman Pandey's wall`}
           width={image.width}
           height={image.height}
-          sizes="(min-width: 1024px) 70vw, 100vw"
+          sizes="(min-width: 1024px) 280px, 70vw"
           className={`${frameClass} w-full object-contain grayscale transition duration-300 ease-out group-hover:grayscale-0`}
         />
       </div>
       <figcaption className="mt-4 meta-label">{image.title}</figcaption>
     </figure>
+  );
+}
+
+function SourceArtGrid({ items }: { items: WallArtwork[] }) {
+  const artworks = items.filter(
+    (item): item is WallArtwork & { sourceImage: TasteImage } =>
+      Boolean(item.sourceImage),
+  );
+
+  if (!artworks.length) {
+    return null;
+  }
+
+  return (
+    <div className="mt-8 border-t border-line pt-5">
+      <p className="meta-label">Originals</p>
+      <div className="mt-5 grid gap-x-6 gap-y-8 sm:grid-cols-2 xl:grid-cols-3">
+        {artworks.map((artwork) => (
+          <SourceArtCard key={artwork.title} artwork={artwork} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SourceArtCard({
+  artwork,
+}: {
+  artwork: WallArtwork & { sourceImage: TasteImage };
+}) {
+  const image = artwork.sourceImage;
+  const frameClass =
+    image.frame === "portrait"
+      ? "aspect-[3/4]"
+      : image.frame === "panorama"
+        ? "aspect-[16/9]"
+        : "aspect-[4/3]";
+
+  return (
+    <article>
+      <div className="group overflow-hidden border border-line bg-paper-strong">
+        <Image
+          src={image.src}
+          alt={image.title}
+          width={image.width}
+          height={image.height}
+          sizes="(min-width: 1280px) 18vw, (min-width: 640px) 38vw, 100vw"
+          className={`${frameClass} w-full object-contain grayscale transition duration-300 ease-out group-hover:grayscale-0`}
+        />
+      </div>
+      <p className="mt-4 meta-label">{artwork.artist}</p>
+      <h3 className="mt-2 text-xl font-semibold tracking-[-0.035em] text-ink">
+        {artwork.title}
+      </h3>
+    </article>
   );
 }
